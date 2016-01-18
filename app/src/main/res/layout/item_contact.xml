@@ -3,71 +3,89 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:background="@color/color_bg_blue"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="2dp">
 
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="60dp"
-        android:layout_height="60dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/imgContantImage" />
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/style_list_item"
+        android:gravity="center_vertical"
+        android:padding="2dp">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="1dp">
+            android:layout_width="60dp"
+            android:layout_height="60dp">
 
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Saiful Islam"
-                android:id="@+id/txtContantName"
-                android:layout_weight="1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Deputy Commisioner, Dhaka"
-                android:id="@+id/txtContantDesignation"
-                android:layout_weight="1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Phone:"
-                android:id="@+id/txtContantPhoneNumber"
-                android:layout_weight="1"
-                android:textColor="@android:color/black" />
+                android:layout_height="match_parent"
+                android:id="@+id/imgContantImage" />
         </LinearLayout>
-    </LinearLayout>
 
-    <TextView
-        android:gravity="center_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="ID:01110201 "
-        android:padding="2dp"
-        android:textColor="@color/color_red"
-        android:id="@+id/txtContantId" />
-    <ImageView
-        android:layout_width="20dp"
-        android:background="@drawable/icon_list_arrow"
-        android:layout_height="match_parent"
-        android:padding="2dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="2dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Saiful Islam"
+                    android:id="@+id/txtContantName"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deputy Commisioner, Dhaka"
+                    android:id="@+id/txtContantDesignation"
+                    android:textColor="@color/color_ash"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone:"
+                    android:id="@+id/txtContantPhoneNumber"
+                    android:textColor="@color/color_ash"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="BP01110201 "
+            android:padding="2dp"
+            android:textColor="@color/color_red"
+            android:id="@+id/txtContantId"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:background="@drawable/icon_list_arrow"
+            android:layout_height="25dp"
+            android:padding="2dp"
+            android:layout_margin="3dp" />
+    </LinearLayout>
 </LinearLayout>
