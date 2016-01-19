@@ -63,7 +63,9 @@ public class FragContactList extends Fragment {
         lvContactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(context, listContact.get(i).getName(), Toast.LENGTH_LONG).show();
+                if(listContact.get(i).getId() != -1) {
+                    Toast.makeText(context, listContact.get(i).getName(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

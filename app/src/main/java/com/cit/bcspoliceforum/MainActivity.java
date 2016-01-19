@@ -49,7 +49,7 @@ public class MainActivity extends FragmentActivity{
         dbHelper = new DbHelper(context);
 
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
-        if(true || !sharedPreferences.contains(SP_INITIATED) || !sharedPreferences.getBoolean(SP_INITIATED,false)) {
+        if(!sharedPreferences.contains(SP_INITIATED) || !sharedPreferences.getBoolean(SP_INITIATED,false)) {
 
             String[] contactList = getResources().getStringArray(R.array.contacts);
 
