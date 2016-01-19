@@ -18,7 +18,7 @@ import com.cit.bcspoliceforum.fragment.FragContactList;
 
 import org.json.JSONObject;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity implements Communicator{
 
     Context context;
 
@@ -112,5 +112,17 @@ public class MainActivity extends FragmentActivity{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void action(Fragment fragment) {
+        transitFragment(fragment);
+    }
+
+    void transitFragment( Fragment fragment){
+        fragTransaction = fragManager.beginTransaction();
+        fragTransaction.addToBackStack(null);
+        fragTransaction.add(R.id.frag_container, fragment, "frag_contact_list");
+        fragTransaction.commit();
     }
 }

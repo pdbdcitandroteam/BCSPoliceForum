@@ -117,7 +117,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor;
 
         if (id != -1) {
-            cursor = db.query(TABLE_CONTACT, null, null, null, CONT_ID + "=" + id, null, null);
+            cursor = db.query(TABLE_CONTACT, null, CONT_ID + "=" + id, null, null, null, null);
         } else if (id == -1 && limit != null) {
             cursor = db.query(TABLE_CONTACT, null, null, null, null, null, CONT_ID, limit);
         } else {

@@ -12,8 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.cit.bcspoliceforum.Communicator;
 import com.cit.bcspoliceforum.R;
 import com.cit.bcspoliceforum.database.DbHelper;
 import com.cit.bcspoliceforum.database.HolderContact;
@@ -30,6 +30,7 @@ public class FragContactList extends Fragment {
     ArrayList<HolderContact> listContact;
     int listCount = 0;
     int extraListCount = 0;
+    Communicator com;
 
     int[] alpha = new int[27];
 
@@ -41,12 +42,14 @@ public class FragContactList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_contact_list, container, false);
         lvContactList = (ListView) view.findViewById(R.id.lv_contact_list);
+
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        com = (Communicator) getActivity();
         init();
     }
 
@@ -63,8 +66,15 @@ public class FragContactList extends Fragment {
         lvContactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(listContact.get(i).getId() != -1) {
-                    Toast.makeText(context, listContact.get(i).getName(), Toast.LENGTH_LONG).show();
+                if (listContact.get(i).getId() != -1) {
+//                    Toast.makeText(context, listContact.get(i).getName(), Toast.LENGTH_LONG).show();
+
+                    Bundle args = new Bundle();
+                    args.putInt("id", listContact.get(i).getId());
+                    Fragment toFragment = new FragProfile();
+                    toFragment.setArguments(args);
+
+                    com.action(toFragment);
                 }
             }
         });
