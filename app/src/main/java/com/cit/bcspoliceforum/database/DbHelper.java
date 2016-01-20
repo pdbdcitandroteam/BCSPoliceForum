@@ -148,5 +148,41 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return contactData;
     }
+
+    public ArrayList<HolderContact> searchContact(String keyword){
+        ArrayList<HolderContact> contactData = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.query(TABLE_CONTACT, null, CONT_NAME+" LIKE '%"+keyword+"%' or "+ CONT_PHONE + " LIKE '%"+keyword+"%'", null, null, null, CONT_NAME );
+
+        if(cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            for (int i = 0; i < cursor.getCount(); i++) {
+                contactData.add(new HolderContact(
+                        cursor.getInt(cursor.getColumnIndex(CONT_ID)),
+                        cursor.getString(cursor.getColumnIndex(CONT_DISPLAY_ID)),
+                        cursor.getString(cursor.getColumnIndex(CONT_NAME)),
+                        cursor.getString(cursor.getColumnIndex(CONT_FATHER)),
+                        cursor.getString(cursor.getColumnIndex(CONT_MOTHER)),
+                        cursor.getString(cursor.getColumnIndex(CONT_ADDRESS)),
+                        cursor.getString(cursor.getColumnIndex(CONT_PHONE)),
+                        cursor.getString(cursor.getColumnIndex(CONT_EMAIL)),
+                        cursor.getString(cursor.getColumnIndex(CONT_POSITION)),
+                        cursor.getString(cursor.getColumnIndex(CONT_POSTING)),
+                        cursor.getString(cursor.getColumnIndex(CONT_BLOOD_GROUP)),
+                        cursor.getString(cursor.getColumnIndex(CONT_PHOTO)),
+                        (cursor.getInt(cursor.getColumnIndex(CONT_CLAIMED))>0),
+                        cursor.getString(cursor.getColumnIndex(CONT_PASSWORD)),
+                        cursor.getString(cursor.getColumnIndex(CONT_VERIFICATION_CODE)),
+                        (cursor.getInt(cursor.getColumnIndex(CONT_VERIFIED))>0)
+                ));
+                cursor.moveToNext();
+            }
+        }
+        return contactData;
+    }
+
 }
 

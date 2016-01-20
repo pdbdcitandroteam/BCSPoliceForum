@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements Communicator{
         if (id == android.R.id.home) {
             bcsDrawerLayout.openDrawer(Gravity.LEFT);
             return true;
+        }else if (id == R.id.action_search){
+
         }
 
         return super.onOptionsItemSelected(item);

@@ -108,9 +108,9 @@ public class FragContactList extends Fragment {
                 char firstChar = data.getName().toUpperCase().charAt(0);
                 int firstCharInt = firstChar;
 
-                if (alpha[firstChar - 65] != 1) {
+                if (alpha[firstCharInt - 65] != 1) {
 
-                    alpha[firstChar - 65] = 1;
+                    alpha[firstCharInt - 65] = 1;
                     listContact.add(position, new HolderContact().setName(firstChar+"") );
                     notifyDataSetChanged();
 
@@ -121,8 +121,8 @@ public class FragContactList extends Fragment {
 //                TextView tvAlpha = (TextView) layout.findViewById(R.id.tv_list_alpha);
 //                tvAlpha.setText(firstChar+"");
 //                return layout;
+                    data = (HolderContact) getItem(position);
                 }
-                data = (HolderContact) getItem(position);
             }
 
 
