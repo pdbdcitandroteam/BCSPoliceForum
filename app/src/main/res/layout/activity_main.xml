@@ -5,20 +5,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/frag_container">
-    </RelativeLayout>
 
-    <fragment
-        android:layout_width="250dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frag_container">
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:name="com.cit.bcspoliceforum.fragment.FragDrawer"
-        android:id="@+id/fragment"
-        android:layout_gravity="start"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        tools:layout="@layout/fragment_frag_drawer"/>
+        android:layout_gravity="start">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.cit.bcspoliceforum.fragment.FragDrawer"
+            android:id="@+id/fragment"
+            android:layout_gravity="start"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            tools:layout="@layout/frag_drawer"/>
+
+    </android.support.design.widget.NavigationView>
+
 
 </android.support.v4.widget.DrawerLayout>

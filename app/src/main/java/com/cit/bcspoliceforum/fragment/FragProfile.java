@@ -36,7 +36,7 @@ public class FragProfile extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View v = inflater.inflate(R.layout.fragment_frag_profile, container, false);
+        View v = inflater.inflate(R.layout.frag_profile, container, false);
 
         context = getActivity();
         PoliceName = (TextView) v.findViewById(R.id.police_name);

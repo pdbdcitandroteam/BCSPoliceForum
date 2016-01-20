@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
@@ -18,7 +21,7 @@ import com.cit.bcspoliceforum.fragment.FragContactList;
 
 import org.json.JSONObject;
 
-public class MainActivity extends FragmentActivity implements Communicator{
+public class MainActivity extends AppCompatActivity implements Communicator{
 
     Context context;
 
@@ -37,16 +40,21 @@ public class MainActivity extends FragmentActivity implements Communicator{
 
     FragmentTransaction fragTransaction;
 
+    ActionBar actionBar;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         init();
     }
 
     private void init() {
         context = MainActivity.this;
         dbHelper = new DbHelper(context);
+        initActionBar();
 
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
         if(!sharedPreferences.contains(SP_INITIATED) || !sharedPreferences.getBoolean(SP_INITIATED,false)) {
@@ -97,6 +105,15 @@ public class MainActivity extends FragmentActivity implements Communicator{
         fragTransaction.commit();
     }
 
+    private void initActionBar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.icon_drawer_toggle));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -107,7 +124,8 @@ public class MainActivity extends FragmentActivity implements Communicator{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == android.R.id.home) {
+            bcsDrawerLayout.openDrawer(Gravity.LEFT);
             return true;
         }
 
